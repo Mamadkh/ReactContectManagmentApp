@@ -1,12 +1,18 @@
 
+import { useState } from 'react';
 import './App.css';
+import Contacts from './components/contact/Contacts';
+import Navbar from './components/Navbar';
 
 const App = () => {
+
+  const [loading , setLoading] = useState(false);
+  const [getContacts, useContacts] = useState([]);
+
   return (
     <div className="App">
-      <h3>Contact Managment Application</h3>
-      <span className='fa fa-address-book'></span>
-      <button className='btn btn-info'><i className='fa fa-facebook'> Click Me!</i></button>
+      <Navbar></Navbar>
+      <Contacts contacts = {getContacts} loading = {loading}></Contacts>
     </div>
   );
 }
