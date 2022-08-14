@@ -1,18 +1,28 @@
 
 import { useState } from 'react';
 import './App.css';
-import Contacts from './components/contact/Contacts';
-import Navbar from './components/Navbar';
+import {
+  AddContact,
+  EditContact,
+  SearchContacts,
+  ViewContact,
+  Contacts,
+  Contact,
+  Navbar,
+  Spinner
+} from './components';
+
+
 
 const App = () => {
 
-  const [loading , setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [getContacts, useContacts] = useState([]);
 
   return (
     <div className="App">
       <Navbar></Navbar>
-      <Contacts contacts = {getContacts} loading = {loading}></Contacts>
+      <Contacts contacts={getContacts} loading={loading}></Contacts>
     </div>
   );
 }
