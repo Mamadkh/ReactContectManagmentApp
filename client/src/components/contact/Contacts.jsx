@@ -26,9 +26,8 @@ const Contacts = ({contacts , loading}) => {
                     <section className='container'>
                     <div className='row'>
                         {
-                            contacts.length > 0 ? contacts.map(c=> (
-                               <Contact key={c.id} Contact = {c}/>
-                            )) :
+                            contacts.length > 0 ? contacts.map((c)=> <Contact key={c.id} Contact = {c}/>
+                            ) :
                             (
                                 <div className=' text-center py-5 ' style={{backgroundColor: CurrentLine}}>
                                     <p className='h3' style={{color: Orange}}> 
