@@ -1,10 +1,11 @@
 
-import { Pink , Orange ,CurrentLine } from '../../helpers/Colors';
+import { Pink, Orange, CurrentLine } from '../../helpers/Colors';
 import Contact from './Contact';
 import Spinner from '../Spinner';
 import Notfound from '../../assets/no-found.gif'
+import { Link } from 'react-router-dom';
 
-const Contacts = ({contacts , loading}) => {
+const Contacts = ({ contacts, loading }) => {
     return (
         <>
             <section className="container">
@@ -12,37 +13,40 @@ const Contacts = ({contacts , loading}) => {
                     <div className='row'>
                         <div className='col'>
                             <p className='h3'>
-                                <button className=' btn mx-2 ' style={{ backgroundColor: Pink }}>
+                                <Link
+                                    to={"/contacts/add"}
+                                    className="btn mx-2"
+                                    style={{ backgroundColor: Pink }}>
                                     Create New User
-                                    <i className='fa fa-plus-circle mx-2'></i>
-                                </button>
+                                    <i className="fa fa-plus-circle mx-2" />
+                                </Link>
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
             {
-                loading ? <Spinner/> : (
+                loading ? <Spinner /> : (
                     <section className='container'>
-                    <div className='row'>
-                        {
-                            contacts.length > 0 ? contacts.map((c)=> <Contact key={c.id} Contact = {c}/>
-                            ) :
-                            (
-                                <div className=' text-center py-5 ' style={{backgroundColor: CurrentLine}}>
-                                    <p className='h3' style={{color: Orange}}> 
-                                        User Not Found ...
-                                    </p>
-                                    <img src={Notfound} alt="notFound" className=' w-25' />
-                                </div>
-                            )
-                        }
-                        
-                    </div>
-                </section>
+                        <div className='row'>
+                            {
+                                contacts.length > 0 ? contacts.map((c) => <Contact key={c.id} Contact={c} />
+                                ) :
+                                    (
+                                        <div className=' text-center py-5 ' style={{ backgroundColor: CurrentLine }}>
+                                            <p className='h3' style={{ color: Orange }}>
+                                                User Not Found ...
+                                            </p>
+                                            <img src={Notfound} alt="notFound" className=' w-25' />
+                                        </div>
+                                    )
+                            }
+
+                        </div>
+                    </section>
                 )
             }
-           
+
         </>
     )
 }

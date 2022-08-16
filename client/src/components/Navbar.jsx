@@ -5,7 +5,7 @@ import { Purple, Background } from "../helpers/Colors"
 const Navbar = () => {
 
     return (
-        <nav className="navbar navbar-dark navbar-expand-sm shadow-lg"
+        <nav className="navbar navbar-dark navbar-expand-md navbar-expand-sm shadow-lg"
             style={{ backgroundColor: Background }}>
             <div className="container">
                 <div className="row w-100">

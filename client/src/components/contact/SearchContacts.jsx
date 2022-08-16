@@ -3,7 +3,7 @@ import {Purple} from "../../helpers/Colors"
 
 const SearchContacts = () => {
     return (
-        <div className="input-group mx-2 w-75" dir="ltr">
+        <div className="input-group mx-2 w-75 d-flex" dir="ltr">
             <span className="input-group-text" id="basic-addon1"
                 style={{ backgroundColor: Purple }}>
                 <i className="fa fa-search"></i>
