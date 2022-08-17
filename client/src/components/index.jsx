@@ -1,7 +1,5 @@
-// better way to importing
 
-
-
+//better way to importing
 
 /* contact Components */
 export {default as AddContact} from './contact/AddContact';

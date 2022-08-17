@@ -1,8 +1,10 @@
+
+
 import { Link } from "react-router-dom";
-import { Spinner } from "../";
+import { Spinner } from "..";
 import { Comment, Green, Purple } from "../../helpers/Colors";
 
-const AddContact = ({ loading }) => {
+const AddContact = ({ loading, setContactInfo, groups, contact, createContactForm, }) => {
     return (
         <>
             {loading ? (
@@ -10,8 +12,9 @@ const AddContact = ({ loading }) => {
             ) : (
                 <>
                     <section className="p-3">
-                        <img className="img-fluid "
+                        <img
                             src={require("../../assets/man-taking-note.png")}
+                            className="img-fluid "
                             style={{
                                 position: "absolute",
                                 zIndex: "-1",
@@ -33,13 +36,14 @@ const AddContact = ({ loading }) => {
                             </div>
                             <hr style={{ backgroundColor: Green }} />
                             <div className="row mt-5">
-                                <div className="col-lg-4 col-md-6 col-sm-12">
-                                    <form>
+                                <div className="col-lg-4 col-md-6 col-sm-12" dir="ltr">
+                                    <form onSubmit={createContactForm}>
                                         <div className="mb-2">
                                             <input
                                                 name="fullname"
                                                 type="text"
-
+                                                value={contact.fullname}
+                                                onChange={setContactInfo}
                                                 className="form-control"
                                                 placeholder="Full Name"
                                                 required={true}
@@ -49,7 +53,8 @@ const AddContact = ({ loading }) => {
                                             <input
                                                 name="photo"
                                                 type="text"
-
+                                                value={contact.photo}
+                                                onChange={setContactInfo}
                                                 className="form-control"
                                                 required={true}
                                                 placeholder="Photo"
@@ -59,7 +64,8 @@ const AddContact = ({ loading }) => {
                                             <input
                                                 name="mobile"
                                                 type="number"
-
+                                                value={contact.mobile}
+                                                onChange={setContactInfo}
                                                 className="form-control"
                                                 required={true}
                                                 placeholder="Phone Number"
@@ -69,7 +75,8 @@ const AddContact = ({ loading }) => {
                                             <input
                                                 type="email"
                                                 name="email"
-
+                                                value={contact.email}
+                                                onChange={setContactInfo}
                                                 className="form-control"
                                                 required={true}
                                                 placeholder="Email"
@@ -79,7 +86,8 @@ const AddContact = ({ loading }) => {
                                             <input
                                                 type="text"
                                                 name="job"
-
+                                                value={contact.job}
+                                                onChange={setContactInfo}
                                                 className="form-control"
                                                 required={true}
                                                 placeholder="Job"
@@ -88,12 +96,17 @@ const AddContact = ({ loading }) => {
                                         <div className="mb-2">
                                             <select
                                                 name="group"
-
+                                                value={contact.group}
+                                                onChange={setContactInfo}
                                                 required={true}
                                                 className="form-control"
                                             >
                                                 <option value="">Choose Group</option>
-
+                                                {groups.length > 0 && groups.map ((group)=>(
+                                                    <option key={group.id} value={group.id}>
+                                                        {group.name}
+                                                        </option>
+                                                ))}
                                             </select>
                                         </div>
                                         <div className="mx-2">

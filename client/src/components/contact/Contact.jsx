@@ -1,7 +1,6 @@
 
 import {CurrentLine, Purple, Orange , Red ,Cyan} from "../../helpers/Colors"
-
-
+import { Link } from 'react-router-dom';
 
 const Contact = ({Contact}) => {
     return (
@@ -27,12 +26,13 @@ const Contact = ({Contact}) => {
                                     Email :{' '}
                                     <span className='fw-bold'>{Contact.email} </span>
                                 </li> 
+                                
                             </ul>
                         </div>
                         <div className=' col-md-1 col-sm-1 d-flex flex-column align-items-center'>
-                            <button className=' btn my-1' style={{ backgroundColor: Orange }}>
+                            <Link to={`/contacts/${Contact.id}`} className=' btn my-1' style={{ backgroundColor: Orange }}>
                                 <i className='fa fa-eye' />
-                            </button>
+                            </Link>
 
                             <button className=' btn my-1' style={{ backgroundColor: Cyan }}>
                                 <i className='fa fa-pencil' />
