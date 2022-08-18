@@ -46,7 +46,7 @@ const ViewContact = () => {
                 <div className="container">
                     <div className="row my-2 text-center">
                         <p className="h3 fw-bold" style={{ color: Cyan }}>
-                            اطلاعات مخاطب
+                            Contact Information
                         </p>
                     </div>
                 </div>

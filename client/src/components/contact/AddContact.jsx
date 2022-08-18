@@ -101,7 +101,7 @@ const AddContact = ({ loading, setContactInfo, groups, contact, createContactFor
                                                 required={true}
                                                 className="form-control"
                                             >
-                                                <option value="">Choose Group</option>
+                                                <option value="">Choose Groups</option>
                                                 {groups.length > 0 && groups.map ((group)=>(
                                                     <option key={group.id} value={group.id}>
                                                         {group.name}
