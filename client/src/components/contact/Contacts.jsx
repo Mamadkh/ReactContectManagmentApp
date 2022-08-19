@@ -5,7 +5,7 @@ import Spinner from '../Spinner';
 import Notfound from '../../assets/no-found.gif'
 import { Link } from 'react-router-dom';
 
-const Contacts = ({ contacts, loading }) => {
+const Contacts = ({ contacts, loading, confirmDelete }) => {
     return (
         <>
             <section className="container">
@@ -30,7 +30,8 @@ const Contacts = ({ contacts, loading }) => {
                     <section className='container'>
                         <div className='row'>
                             {
-                                contacts.length > 0 ? contacts.map((c) => <Contact key={c.id} Contact={c} />
+                                contacts.length > 0 ? contacts.map((c) => <Contact key={c.id}
+                                    confirmDelete={()=>confirmDelete (c.id , c.fullName) } Contact={c} />
                                 ) :
                                     (
                                         <div className=' text-center py-5 ' style={{ backgroundColor: CurrentLine }}>

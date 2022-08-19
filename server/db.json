@@ -10,11 +10,15 @@
       "mobile": "4387221925",
       "email": "mohammad.reza.khorsand@gmail.com",
       "job": "programmer",
-      "group": "1",
+      "group": [
+        "2"
+      ],
       "id": 2
     },
     {
-      "fullname": "laptop hp",
+      "fullname": [
+        "laptop hp 3 "
+      ],
       "photo": "https://www.bing.com/images/search?view=detailV2&ccid=udkmDhOj&id=1500E1AAB2E8F78B7601B3139EFF89C68E025CC2&thid=OIP.udkmDhOj3mXcjB7ZYb4rIQHaKq&mediaurl=https%3a%2f%2fstatic3.bigstockphoto.com%2f8%2f7%2f2%2flarge1500%2f27809795.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.b9d9260e13a3de65dc8c1ed961be2b21%3frik%3dwlwCjsaJ%252f54Tsw%26pid%3dImgRaw%26r%3d0&exph=1620&expw=1125&q=photo+preview&simid=608023093011045797&FORM=IRPRST&ck=881C3A59D018431FA78D3DE20214CB23&selectedIndex=23&ajaxhist=0&ajaxserp=0",
       "mobile": "4387221925",
       "email": "Mohammad.reza.khorsand@gmail.com",
@@ -24,32 +28,20 @@
     },
     {
       "fullname": [
-        "atefeh "
+        "Atefeh "
       ],
       "photo": "https://www.bing.com/images/search?view=detailV2&ccid=udkmDhOj&id=1500E1AAB2E8F78B7601B3139EFF89C68E025CC2&thid=OIP.udkmDhOj3mXcjB7ZYb4rIQHaKq&mediaurl=https%3a%2f%2fstatic3.bigstockphoto.com%2f8%2f7%2f2%2flarge1500%2f27809795.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.b9d9260e13a3de65dc8c1ed961be2b21%3frik%3dwlwCjsaJ%252f54Tsw%26pid%3dImgRaw%26r%3d0&exph=1620&expw=1125&q=photo+preview&simid=608023093011045797&FORM=IRPRST&ck=881C3A59D018431FA78D3DE20214CB23&selectedIndex=23&ajaxhist=0&ajaxserp=0",
-      "mobile": "5652221111",
+      "mobile": [
+        "4388765759"
+      ],
       "email": "atefehdelnaz@gmail.com",
-      "job": "architetct",
-      "group": "4",
+      "job": [
+        "civil eng"
+      ],
+      "group": [
+        "5"
+      ],
       "id": 4
-    },
-    {
-      "fullname": "kmkmk",
-      "photo": "https://www.bing.com/images/search?view=detailV2&ccid=udkmDhOj&id=1500E1AAB2E8F78B7601B3139EFF89C68E025CC2&thid=OIP.udkmDhOj3mXcjB7ZYb4rIQHaKq&mediaurl=https%3a%2f%2fstatic3.bigstockphoto.com%2f8%2f7%2f2%2flarge1500%2f27809795.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.b9d9260e13a3de65dc8c1ed961be2b21%3frik%3dwlwCjsaJ%252f54Tsw%26pid%3dImgRaw%26r%3d0&exph=1620&expw=1125&q=photo+preview&simid=608023093011045797&FORM=IRPRST&ck=881C3A59D018431FA78D3DE20214CB23&selectedIndex=23&ajaxhist=0&ajaxserp=0",
-      "mobile": "4387221925",
-      "email": "Mohammad.reza.khorsand@gmail.com",
-      "job": "architetct",
-      "group": "2",
-      "id": 5
-    },
-    {
-      "fullname": "hgfgfggdf",
-      "photo": "https://toplearn.com/masters/AdminUser",
-      "mobile": "5652221111",
-      "email": "atefehdelnaz@gmail.com",
-      "job": "architetct",
-      "group": "5",
-      "id": 6
     }
   ],
   "groups": [
