@@ -1,21 +1,24 @@
 
+import { useContext } from 'react';
 import { Pink, Orange, CurrentLine } from '../../helpers/Colors';
+import { ContactContext } from '../../context/contactContext';
 import Contact from './Contact';
 import Spinner from '../Spinner';
 import Notfound from '../../assets/no-found.gif'
 import { Link } from 'react-router-dom';
 
-const Contacts = ({ contacts, loading, confirmDelete }) => {
+const Contacts = () => {
+    const { filteredContacts , loading, deleteContact } = useContext(ContactContext);
     return (
         <>
             <section className="container">
                 <div className='grid'>
                     <div className='row'>
                         <div className='col'>
-                            <p className='h3'>
+                            <p className='h3 float-lg-start float-md-start float-sm-start'>
                                 <Link
                                     to={"/contacts/add"}
-                                    className="btn mx-2"
+                                    className="btn m-2"
                                     style={{ backgroundColor: Pink }}>
                                     Create New User
                                     <i className="fa fa-plus-circle mx-2" />
@@ -30,9 +33,9 @@ const Contacts = ({ contacts, loading, confirmDelete }) => {
                     <section className='container'>
                         <div className='row'>
                             {
-                                contacts.length > 0 ? contacts.map((c) => <Contact key={c.id}
-                                    confirmDelete={()=>confirmDelete (c.id , c.fullName) } Contact={c} />
-                                ) :
+                                filteredContacts.length > 0 ? filteredContacts.map((c) =>( <Contact key={c.id}
+                                    deleteContact={() => deleteContact(c.id, c.fullName)} Contact={c} />
+                                )):
                                     (
                                         <div className=' text-center py-5 ' style={{ backgroundColor: CurrentLine }}>
                                             <p className='h3' style={{ color: Orange }}>

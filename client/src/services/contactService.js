@@ -3,10 +3,6 @@ import axios from "axios";
 
 const SERVER_URL = "http://localhost:9000";
 
-// import axios from 'axios';
-
-// const SERVICE_URL = "http://localhost:9000";
-
 // @desc Get All Contacts
 // @route GET http://localhost:9000/contacts
 export const getAllContacts = () => {
