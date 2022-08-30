@@ -4,9 +4,12 @@ import { ContactContext } from "../../context/contactContext";
 import { Link } from "react-router-dom";
 import { Spinner } from "..";
 import { Comment, Green, Purple } from "../../helpers/Colors";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { contactSchema } from "../../validation/contactValidation"
 
 const AddContact = () => {
-    const { loading, groups, contact, onContactChange, createContact } = useContext(ContactContext)
+    const { loading, groups, createContact } = useContext(ContactContext)
+
     return (
         <>
             {loading ? (
@@ -39,94 +42,96 @@ const AddContact = () => {
                             <hr style={{ backgroundColor: Green }} />
                             <div className="row mt-5">
                                 <div className="col-lg-4 col-md-6 col-sm-12" dir="ltr">
-                                    <form onSubmit={createContact}>
-                                        <div className="mb-2">
-                                            <input
-                                                name="fullname"
-                                                type="text"
-                                                value={contact.fullname}
-                                                onChange={onContactChange}
-                                                className="form-control"
-                                                placeholder="Full Name"
-                                                required={true}
-                                            />
-                                        </div>
-                                        <div className="mb-2">
-                                            <input
-                                                name="photo"
-                                                type="text"
-                                                value={contact.photo}
-                                                onChange={onContactChange}
-                                                className="form-control"
-                                                required={true}
-                                                placeholder="Photo"
-                                            />
-                                        </div>
-                                        <div className="mb-2">
-                                            <input
-                                                name="mobile"
-                                                type="number"
-                                                value={contact.mobile}
-                                                onChange={onContactChange}
-                                                className="form-control"
-                                                required={true}
-                                                placeholder="Phone Number"
-                                            />
-                                        </div>
-                                        <div className="mb-2">
-                                            <input
-                                                type="email"
-                                                name="email"
-                                                value={contact.email}
-                                                onChange={onContactChange}
-                                                className="form-control"
-                                                required={true}
-                                                placeholder="Email"
-                                            />
-                                        </div>
-                                        <div className="mb-2">
-                                            <input
-                                                type="text"
-                                                name="job"
-                                                value={contact.job}
-                                                onChange={onContactChange}
-                                                className="form-control"
-                                                required={true}
-                                                placeholder="Job"
-                                            />
-                                        </div>
-                                        <div className="mb-2">
-                                            <select
-                                                name="group"
-                                                value={contact.group}
-                                                onChange={onContactChange}
-                                                required={true}
-                                                className="form-control"
-                                            >
-                                                <option value="">Choose Groups</option>
-                                                {groups.length > 0 && groups.map((group) => (
-                                                    <option key={group.id} value={group.id}>
-                                                        {group.name}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                        <div className="mx-2">
-                                            <input
-                                                type="submit"
-                                                className="btn"
-                                                style={{ backgroundColor: Purple }}
-                                                value="New User"
-                                            />
-                                            <Link
-                                                to={"/contacts"}
-                                                className="btn mx-2"
-                                                style={{ backgroundColor: Comment }}
-                                            >
-                                                Cancel
-                                            </Link>
-                                        </div>
-                                    </form>
+                                    <Formik
+                                        initialValues={{
+                                            fullname: "",
+                                            photo: "",
+                                            mobile: "",
+                                            email: "",
+                                            job: "",
+                                            group: "",
+                                        }}
+                                        validationSchema={contactSchema}
+                                        onSubmit={(values) => {
+                                            createContact(values)
+                                        }}
+                                    >
+                                        <Form>
+                                            <div className="mb-2">
+                                                <Field
+                                                    name="fullname"
+                                                    type="text"
+                                                    className="form-control"
+                                                    placeholder="Full Name"
+                                                />
+                                                <ErrorMessage name="fullname" render={msg => <div className="text-danger">{msg}</div>}/>
+                                            </div>
+                                            <div className="mb-2">
+                                                <Field
+                                                    name="photo"
+                                                    type="text"
+                                                    className="form-control"
+                                                    placeholder="Photo"
+                                                />
+                                                <ErrorMessage  name="photo" render={msg => <div className="text-danger">{msg}</div>}/>
+                                            </div>
+                                            <div className="mb-2">
+                                                <Field
+                                                    name="mobile"
+                                                    type="number"
+                                                    className="form-control"
+                                                    placeholder="Phone Number"
+                                                />
+                                                <ErrorMessage  name="mobile" render={msg => <div className="text-danger">{msg}</div>}/>
+                                            </div>
+                                            <div className="mb-2">
+                                                <Field
+                                                    name="email"
+                                                    type="email"
+                                                    className="form-control"
+                                                    placeholder="Email"
+                                                />
+                                                <ErrorMessage  name="email" render={msg => <div className="text-danger">{msg}</div>} />
+                                            </div>
+                                            <div className="mb-2">
+                                                <Field
+                                                    name="job"
+                                                    type="text"
+                                                    className="form-control"
+                                                    placeholder="Job"
+                                                />
+                                            </div>
+                                            <div className="mb-2">
+                                                <Field
+                                                    id="group"
+                                                    as="select" className="form-control"
+                                                >
+                                                    <option value="">Choose Groups</option>
+                                                    {groups.length > 0 && groups.map((group) => (
+                                                        <option key={group.id} value={group.id}>
+                                                            {group.name}
+                                                        </option>
+                                                    ))}
+                                                </Field>
+                                                <ErrorMessage name="group" render={msg => <div className="text-danger">{msg}</div>}/>
+                                            </div>
+                                            <div className="mx-2">
+                                                <input
+                                                    type="submit"
+                                                    className="btn"
+                                                    style={{ backgroundColor: Purple }}
+                                                    value="New User"
+                                                />
+                                                <Link
+                                                    to={"/contacts"}
+                                                    className="btn mx-2"
+                                                    style={{ backgroundColor: Comment }}
+                                                >
+                                                    Cancel
+                                                </Link>
+                                            </div>
+                                        </Form>
+                                    </Formik>
                                 </div>
                             </div>
                         </div>

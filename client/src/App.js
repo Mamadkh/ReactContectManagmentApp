@@ -29,6 +29,7 @@ import {
   Comment,
 } from "../src/helpers/Colors";
 
+
 const App = () => {
   const [loading, setLoading] = useState(false);
   const [contacts, setContacts] = useState([]);
@@ -60,17 +61,17 @@ const App = () => {
     fetchData();
   }, []);
 
-  const createContactForm = async (event) => {
-    event.preventDefault();
+  const createContactForm = async (values) => {
+    
     try {
       setLoading((prevLoading) => !prevLoading);
-      const { status, data } = await createContact(contact);
+
+      const { status, data } = await createContact(values);
 
       if (status === 201) {
         const allContacts = [...contacts, data];
         setContact(allContacts);
         setFilteredContacts(allContacts);
-        setContact({});
         setLoading((prevLoading) => !prevLoading);
         navigate("/contacts");
       }
@@ -128,22 +129,12 @@ const App = () => {
   };
 
   const removeContact = async (contactId) => {
-    /*
-     * NOTE
-     * 1- forceRender -> setForceRender
-     * 2- Server Request
-     * 3- Delete Local State
-     * 4- Delete State Before Server Request
-     */
-
-    // Contacts Copy
     const allContacts = [...contacts];
     try {
       const updatedContact = contacts.filter((c) => c.id !== contactId);
       setContacts(updatedContact);
       setFilteredContacts(updatedContact);
 
-      // Sending delete request to server
       const { status } = await deleteContact(contactId);
 
       if (status !== 200) {
@@ -186,6 +177,7 @@ const App = () => {
       setFilteredContacts,
       contacts,
       groups,
+      // errors,
       filteredContacts,
       onContactChange,
       deleteContact: confirmDelete,
