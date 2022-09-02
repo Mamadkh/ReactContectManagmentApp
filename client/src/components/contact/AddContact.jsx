@@ -1,14 +1,16 @@
 
 import { useContext } from "react";
-import { ContactContext } from "../../context/contactContext";
 import { Link } from "react-router-dom";
-import { Spinner } from "..";
-import { Comment, Green, Purple } from "../../helpers/Colors";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { contactSchema } from "../../validation/contactValidation"
+
+import { contactSchema } from "../../validation/contactValidation";
+import { ContactContext } from "../../context/contactContext";
+import { Spinner } from "../";
+import { Comment, Green, Purple } from "../../helpers/Colors";
+
 
 const AddContact = () => {
-    const { loading, groups, createContact } = useContext(ContactContext)
+    const { loading, groups, createContact } = useContext(ContactContext);
 
     return (
         <>
@@ -17,35 +19,35 @@ const AddContact = () => {
             ) : (
                 <>
                     <section className="p-3">
-                        <img
+                        <img className="img-fluid"
                             src={require("../../assets/man-taking-note.png")}
-                            className="img-fluid "
+                            height="400px"
                             style={{
                                 position: "absolute",
                                 zIndex: "-1",
-                                top: "140px",
+                                top: "130px",
                                 left: "100px",
                                 opacity: "50%",
                             }}
                         />
                         <div className="container" dir="rtl">
-                            <div className="row ">
-                                <div className="col">
+                            <div className="row">
+                                <div className=" col-md-auto">
                                     <p
                                         className="h4 fw-bold text-center"
                                         style={{ color: Green }}
                                     >
-                                        Create New user
+                                        Create New Contatc
                                     </p>
                                 </div>
                             </div>
                             <hr style={{ backgroundColor: Green }} />
                             <div className="row mt-5">
-                                <div className="col-lg-4 col-md-6 col-sm-12" dir="ltr">
+                                <div className="col-md-4">
                                     <Formik
                                         initialValues={{
                                             fullname: "",
-                                            photo: "",
+                                            //photo: "",
                                             mobile: "",
                                             email: "",
                                             job: "",
@@ -53,7 +55,7 @@ const AddContact = () => {
                                         }}
                                         validationSchema={contactSchema}
                                         onSubmit={(values) => {
-                                            createContact(values)
+                                            createContact(values);
                                         }}
                                     >
                                         <Form>
@@ -62,9 +64,14 @@ const AddContact = () => {
                                                     name="fullname"
                                                     type="text"
                                                     className="form-control"
-                                                    placeholder="Full Name"
+                                                    placeholder="Full name"
                                                 />
-                                                <ErrorMessage name="fullname" render={msg => <div className="text-danger">{msg}</div>}/>
+                                                <ErrorMessage
+                                                    name="fullname"
+                                                    render={(msg) => (
+                                                        <div className="text-danger">{msg}</div>
+                                                    )}
+                                                />
                                             </div>
                                             <div className="mb-2">
                                                 <Field
@@ -73,7 +80,13 @@ const AddContact = () => {
                                                     className="form-control"
                                                     placeholder="Photo"
                                                 />
-                                                <ErrorMessage  name="photo" render={msg => <div className="text-danger">{msg}</div>}/>
+
+                                                <ErrorMessage
+                                                    name="photo"
+                                                    render={(msg) => (
+                                                        <div className="text-danger">{msg}</div>
+                                                    )}
+                                                />
                                             </div>
                                             <div className="mb-2">
                                                 <Field
@@ -82,7 +95,13 @@ const AddContact = () => {
                                                     className="form-control"
                                                     placeholder="Phone Number"
                                                 />
-                                                <ErrorMessage  name="mobile" render={msg => <div className="text-danger">{msg}</div>}/>
+
+                                                <ErrorMessage
+                                                    name="mobile"
+                                                    render={(msg) => (
+                                                        <div className="text-danger">{msg}</div>
+                                                    )}
+                                                />
                                             </div>
                                             <div className="mb-2">
                                                 <Field
@@ -91,7 +110,13 @@ const AddContact = () => {
                                                     className="form-control"
                                                     placeholder="Email"
                                                 />
-                                                <ErrorMessage  name="email" render={msg => <div className="text-danger">{msg}</div>} />
+
+                                                <ErrorMessage
+                                                    name="email"
+                                                    render={(msg) => (
+                                                        <div className="text-danger">{msg}</div>
+                                                    )}
+                                                />
                                             </div>
                                             <div className="mb-2">
                                                 <Field
@@ -100,21 +125,37 @@ const AddContact = () => {
                                                     className="form-control"
                                                     placeholder="Job"
                                                 />
+
+                                                <ErrorMessage
+                                                    name="job"
+                                                    render={(msg) => (
+                                                        <div className="text-danger">{msg}</div>
+                                                    )}
+                                                />
                                             </div>
                                             <div className="mb-2">
                                                 <Field
-                                                    id="group"
-                                                    as="select" className="form-control"
+                                                    name="group"
+                                                    as="select"
+                                                    className="form-control"
                                                 >
                                                     <option value="">Choose Groups</option>
-                                                    {groups.length > 0 && groups.map((group) => (
-                                                        <option key={group.id} value={group.id}>
-                                                            {group.name}
-                                                        </option>
-                                                    ))}
+                                                    {groups.length > 0 &&
+                                                        groups.map((group) => (
+                                                            <option key={group.id} value={group.id}>
+                                                                {group.name}
+                                                            </option>
+                                                        ))}
                                                 </Field>
-                                                <ErrorMessage name="group" render={msg => <div className="text-danger">{msg}</div>}/>
+
+                                                <ErrorMessage
+                                                    name="group"
+                                                    render={(msg) => (
+                                                        <div className="text-danger">{msg}</div>
+                                                    )}
+                                                />
                                             </div>
+
                                             <div className="mx-2">
                                                 <input
                                                     type="submit"
