@@ -1,14 +1,13 @@
 
 
 import { useEffect } from "react";
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import { ContactContext } from "../src/context/contactContext";
 import { useImmer } from "use-immer";
 import _ from "lodash";
-// import {toast,ToastContainer} from "react-toastify";
-import toast , {Toaster} from "react-hot-toast"
-
+import toast, { Toaster } from "react-hot-toast"
+import Footer from "./components/footer";
 import {
   AddContact,
   ViewContact,
@@ -16,6 +15,7 @@ import {
   EditContact,
   Navbar,
 } from "./components";
+
 
 import {
   getAllContacts,
@@ -90,7 +90,6 @@ const App = () => {
       customUI: ({ onClose }) => {
         return (
           <div
-
             style={{
               backgroundColor: CurrentLine,
               border: `1px solid ${Purple}`,
@@ -158,6 +157,8 @@ const App = () => {
     );
   }, 1000);
 
+  const location = useLocation();
+
   return (
     <ContactContext.Provider value={{
       loading,
@@ -172,8 +173,7 @@ const App = () => {
       contactSearch,
     }}>
       <div className="App">
-        {/* <ToastContainer theme="colored"/> */}
-        <Toaster/>
+        <Toaster />
         <Navbar />
         <Routes>
           <Route path="/" element={<Navigate to="/contacts" />} />
@@ -182,6 +182,11 @@ const App = () => {
           <Route path="/contacts/:contactId" element={<ViewContact />} />
           <Route path='/contacts/editcontact/:contactId' element={<EditContact />} />
         </Routes>
+        {location.pathname === "/contacts" ? (
+          <div className="col">
+            <Footer />
+          </div>
+        ) : null}
       </div>
     </ContactContext.Provider>
 

@@ -47,7 +47,7 @@ const AddContact = () => {
                                     <Formik
                                         initialValues={{
                                             fullname: "",
-                                            //photo: "",
+                                            photo: "",
                                             mobile: "",
                                             email: "",
                                             job: "",
